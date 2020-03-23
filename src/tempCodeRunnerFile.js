@@ -1,4 +1,0 @@
-turn (
-    <div>
-      <HomePage />
-    </div>
