@@ -7,27 +7,24 @@ const StripeCheckoutButton = ({ price }) => {
   const publishableKey = 'pk_test_CHDejyKR4pkwhHZHfgvKn7c700IDntZLnc';
 
   const onToken = (token) => {
-    alert('Payment Successful!');
-    console.log(token);
-    // ! Fails due to some India specific error
-    // axios({
-    //   url    : 'payment',
-    //   method : 'post',
-    //   data   : {
-    //     amount : priceForStripe,
-    //     token
-    //   }
-    // })
-    //   .then((response) => {
-    //     console.log('Payment successful: ', JSON.parse(response));
-    //     alert('Payment Successful');
-    //   })
-    //   .catch((error) => {
-    //     console.log('Payment error: ', JSON.parse(error));
-    //     alert(
-    //       'There was an error with your payment. Please be sure to use the provided credit card.'
-    //     );
-    //   });
+    axios({
+      url    : 'payment',
+      method : 'post',
+      data   : {
+        amount : priceForStripe,
+        token
+      }
+    })
+      .then((response) => {
+        console.log('Payment successful: ', response);
+        alert('Payment Successful');
+      })
+      .catch((error) => {
+        console.log('Payment error: ', error);
+        alert(
+          'There was an error with your payment. Please be sure to use the provided credit card.'
+        );
+      });
   };
 
   return (

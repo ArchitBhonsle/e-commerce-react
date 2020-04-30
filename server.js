@@ -21,7 +21,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// ! Fails due to some India specific error
 app.post('/payment', (req, res) => {
   const body = {
     source   : req.body.token.id,
